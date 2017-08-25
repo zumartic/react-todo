@@ -35,3 +35,12 @@ var final = ['Zum', ...names];
 final.forEach(function (nimi){
    console.log("Hi " + nimi);
 });
+
+
+    var todoData = {
+        id: 11, 
+        text: 'Test features',
+        completed: false
+    };
+
+    console.log(todoData.id);
