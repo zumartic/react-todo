@@ -4,9 +4,9 @@
   "description": "Simple react app",
   "main": "index.js",
   "scripts": {
-    "test": "karma start",
+    "test": "NODE_ENV=test karma start",
     "build": "webpack",
-    "start": "node server.js"
+    "start": "npm run build && node server.js"
   },
   "author": "Sami Kangas",
   "license": "MIT",
