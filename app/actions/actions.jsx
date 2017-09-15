@@ -47,7 +47,7 @@ export var addTodos = (todos) => {
 }
 
 export var startAddTodos = () => {
-    return (dispach, getState) => {
+    return (dispatch, getState) => {
         var todosRef = firebaseRef.child('todos');
 
         return todosRef.once('value').then((snapshot) => {
@@ -61,7 +61,7 @@ export var startAddTodos = () => {
                 });
             });
 
-            dispach(addTodos(parsedTodos));
+            dispatch(addTodos(parsedTodos));
         });
     };
 };
@@ -88,7 +88,7 @@ export var startToggleTodo = (id, completed) => {
 };
 
 export var startLogin = () => {
-    return (dispach, getState) => {
+    return (dispatch, getState) => {
         firebase.auth().signInWithPopup(githubProvider).then((result)=> {
             console.log('Auth worked!', result);
         }, (e) => {
@@ -98,9 +98,23 @@ export var startLogin = () => {
 };
 
 export var startLogout = () => {
-    return (dispach, getState) => {
+    return (dispatch, getState) => {
         return firebase.auth().signOut().then(() => {
             console.log('Logged Out!');
         });
+    };
+};
+
+export var login = (uid) => {
+    return {
+        type: 'LOGIN',
+        uid
+    };
+};
+
+
+export var logout = () => {
+    return {
+        type: 'LOGOUT'
     };
 };
